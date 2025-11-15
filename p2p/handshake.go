@@ -1,5 +1,12 @@
 package p2p
 
-type HandShakeFunc func(any) error
+import "fmt"
 
-func NOPHandshake (any) error {return nil}
+type HandShakeFunc func(Peer) error
+func NOPHandshake (Peer) error {return nil}
+
+type OnPeerFunc func(Peer) error
+func NOPOnPeer (Peer) error {
+	fmt.Printf("[DEBUG] A new peer is available")
+	return nil
+}
